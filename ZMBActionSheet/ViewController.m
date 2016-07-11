@@ -38,7 +38,6 @@
 - (void)open
 {
   ZMBActionSheet *sheet = [[ZMBActionSheet alloc] initWithTitle:@"我是不是你最心爱的人？"
-                                                       delegate:self
                                               cancelButtonTitle:@"取消"
                                               otherButtonTitles:@"嗯哼",@"让我考虑一分钟", nil];
 
@@ -62,7 +61,6 @@
 - (void)open1
 {
   ZMBActionSheet *sheet = [[ZMBActionSheet alloc] initWithTitle:nil
-                                                       delegate:nil
                                               cancelButtonTitle:@"取消"
                                               otherButtonTitles:@"小视频",@"拍照",@"从手机相册选择", nil];
   

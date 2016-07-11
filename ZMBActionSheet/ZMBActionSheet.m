@@ -8,11 +8,13 @@
 
 #import "ZMBActionSheet.h"
 
-#import "Masonry.h"
 
 #define kRGBAColor(r, g, b, a)   [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 #define kBGColor  kRGBAColor(160, 160, 160, 0)
 
+#define kTitleColor  [UIColor blackColor]
+
+#define kTitleFont   [UIFont systemFontOfSize:13]
 
 @interface NSString (Addition)
 
@@ -37,8 +39,6 @@
 @end
 
 
-
-
 static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
 
 @interface ZMBActionSheet ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
@@ -55,11 +55,66 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
 
 @implementation ZMBActionSheet
 
+//
+//-(instancetype)initWithTitle:(NSString *)title
+//                    delegate:(id<ZMBActionSheetDelegate>)delegate
+//           cancelButtonTitle:(NSString *)cancelButtonTitle
+//           otherButtonTitles:(NSString *)otherButtonTitles, ...
+//{
+//  self = [super init];
+//
+//  if (self) {
+//
+//    self.backgroundColor = kBGColor;
+//
+//    CGSize size = [UIScreen mainScreen].bounds.size;
+//
+//    self.frame = CGRectMake(0, 0, size.width, size.height);
+//
+//    _otherButtonTitles = [NSMutableArray array];
+//
+//    _delegate = delegate;
+//    _title = title;
+//    _cancelButtonTitle = cancelButtonTitle;
+//
+//
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                                                 action:@selector(hidden)];
+//    [self addGestureRecognizer:tapGesture];
+//    tapGesture.delegate = self;
+//
+//    NSString *aTitle = otherButtonTitles;
+//
+//    va_list titleList;
+//
+//    if (otherButtonTitles) {
+//      va_start(titleList, otherButtonTitles);
+//
+//      do {
+//        [_otherButtonTitles addObject:aTitle];
+//        aTitle = va_arg(titleList, NSString *);
+//      } while (aTitle != nil);
+//
+//      va_end(titleList);
+//    }
+//
+//    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, 0)];
+//
+//    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kSheetItemIdentifer];
+//    _tableView.delegate = self;
+//    _tableView.dataSource = self;
+//    _tableView.scrollEnabled = NO;
+//
+//    [self addSubview:_tableView];
+//
+//  }
+//
+//  return self;
+//}
 
--(instancetype)initWithTitle:(NSString *)title
-                    delegate:(id<ZMBActionSheetDelegate>)delegate
-           cancelButtonTitle:(NSString *)cancelButtonTitle
-           otherButtonTitles:(NSString *)otherButtonTitles, ...
+- (nonnull instancetype)initWithTitle:(nullable NSString *)title
+                    cancelButtonTitle:(nullable NSString *)cancelButtonTitle
+                    otherButtonTitles:(nullable NSString *)otherButtonTitles, ...
 {
   self = [super init];
   
@@ -68,14 +123,15 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
     self.backgroundColor = kBGColor;
     
     CGSize size = [UIScreen mainScreen].bounds.size;
-
+    
     self.frame = CGRectMake(0, 0, size.width, size.height);
     
     _otherButtonTitles = [NSMutableArray array];
     
-    _delegate = delegate;
     _title = title;
     _cancelButtonTitle = cancelButtonTitle;
+    
+    _destructiveButtonIndex = -1;
     
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -106,19 +162,22 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
     _tableView.scrollEnabled = NO;
     
     [self addSubview:_tableView];
-  
+    
   }
   
   return self;
 }
 
-
-
 - (nullable NSString *)buttonTitleAtIndex:(NSInteger)buttonIndex
 {
-  if (buttonIndex == 0) {
+  if (self.cancelButtonTitle && buttonIndex == 0) {
     return self.cancelButtonTitle;
   }
+  
+  if (buttonIndex - 1 > self.otherButtonTitles.count) {
+    return nil;
+  }
+  
   return self.otherButtonTitles[buttonIndex - 1];
   
 }
@@ -135,7 +194,11 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
 
 - (void)show
 {
-  [[UIApplication sharedApplication].delegate.window.rootViewController.view addSubview:self];
+  UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].delegate.window.rootViewController;
+  
+  [nav.view addSubview:self];
+  
+//  nav.interactivePopGestureRecognizer.enabled = NO;
   
   CGRect frame = self.tableView.frame;
   
@@ -153,8 +216,8 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
       
       self.tableView.frame = frame;
       
-      self.backgroundColor = [kBGColor colorWithAlphaComponent:0.40];
-
+      self.backgroundColor = [kBGColor colorWithAlphaComponent:0.50];
+      
     }];
   } completion:^(BOOL finished) {
   }];
@@ -163,6 +226,11 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
 
 - (void)hidden
 {
+  
+  UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].delegate.window.rootViewController;
+  
+//  nav.interactivePopGestureRecognizer.enabled = YES;
+  
   [UIView animateWithDuration:0.3 animations:^{
     
     CGRect frame = self.tableView.frame;
@@ -191,6 +259,8 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
   return 0;
 }
 
+
+
 #pragma mark -
 #pragma mark - gestureRecognizer delegate
 
@@ -213,7 +283,7 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
   NSInteger number = 1;
   
   number = self.title ? ++number : number;
-
+  
   number = self.cancelButtonTitle ? ++number : number;
   
   return number;
@@ -232,7 +302,7 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
     
   }
   else if (section == 1) {
-  
+    
     if (self.title) {
       return self.otherButtonTitles.count;
     }
@@ -248,7 +318,7 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
     }
     
   }
-
+  
   return 0;
 }
 
@@ -261,26 +331,30 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
   cell.textLabel.adjustsFontSizeToFitWidth = YES;
   cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 15);
   
-  if (self.otherButtonTitleColor) {
-    cell.textLabel.textColor = self.otherButtonTitleColor;
-  }
-
   
   if (indexPath.section == 0) {
     
     if (self.title) {
       cell.textLabel.text = self.title;
-      cell.textLabel.font = [UIFont systemFontOfSize:14];
+      cell.textLabel.font = kTitleFont;
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
       cell.textLabel.numberOfLines = 0;
       
-      if (self.titleColor) {
-        cell.textLabel.textColor = self.titleColor;
-      }
+      cell.textLabel.textColor = self.titleColor ? self.titleColor : kTitleColor;
       
     }
     else {
       cell.textLabel.text = self.otherButtonTitles[indexPath.row];
+      
+      if (self.otherButtonTitleColor) {
+        cell.textLabel.textColor = self.otherButtonTitleColor;
+      }
+      
+      if (self.destructiveButtonIndex != -1 && self.destructiveButtonIndex - 1 == indexPath.row) {
+        cell.textLabel.textColor = [UIColor redColor];
+      }
+      
+      
     }
     
   }
@@ -288,6 +362,14 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
     
     if (self.title) {
       cell.textLabel.text = self.otherButtonTitles[indexPath.row];
+      if (self.otherButtonTitleColor) {
+        cell.textLabel.textColor = self.otherButtonTitleColor;
+      }
+      
+      if (self.destructiveButtonIndex != -1 && self.destructiveButtonIndex - 1 == indexPath.row) {
+        cell.textLabel.textColor = [UIColor redColor];
+      }
+      
     }
     else {
       cell.textLabel.text = self.cancelButtonTitle;
@@ -309,7 +391,8 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
     }
     
   }
-
+  
+  
   
   return cell;
 }
@@ -344,6 +427,9 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
   
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   
+  [self hidden];
+  
+  
   NSInteger index = 0;
   if ((self.title && indexPath.section == 1) || (!self.title && indexPath.section == 0)) {
     
@@ -356,19 +442,30 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
     [self.delegate actionSheet:self didClickedButtonAtIndex:index];
   }
   else if (self.didClickedButtonAtIndex) {
-   
+    
     self.didClickedButtonAtIndex(index);
- 
+    
   }
   
-  [self hidden];
-
+  
+  if (index == self.destructiveButtonIndex && self.didClickedDestructiveButtonAtIndex) {
+    
+    self.didClickedDestructiveButtonAtIndex(self.destructiveButtonIndex);
+  }
+  
+  
+  if (index == self.cancelButtonIndex && self.didClickedCancelButtonAtIndex) {
+    self.didClickedCancelButtonAtIndex(self.cancelButtonIndex);
+  }
+  
+  
+  
 }
 
 
 - (CGFloat)titleHeight
 {
-  return [self.title heightWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:self.frame.size.width] + 15 * 2;
+  return [self.title heightWithFont:kTitleFont constrainedToWidth:self.frame.size.width] + 15 * 2;
 }
 
 - (CGFloat)tableViewHeight

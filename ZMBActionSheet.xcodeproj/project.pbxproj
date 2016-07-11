@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23D63E0F48BC0F9229229788 /* libPods-ZMBActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B338BB7A3793351D76F0F3B /* libPods-ZMBActionSheet.a */; };
 		746889C21D2D191600354591 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 746889C11D2D191600354591 /* main.m */; };
 		746889C51D2D191600354591 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 746889C41D2D191600354591 /* AppDelegate.m */; };
 		746889C81D2D191600354591 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 746889C71D2D191600354591 /* ViewController.m */; };
@@ -37,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B338BB7A3793351D76F0F3B /* libPods-ZMBActionSheet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZMBActionSheet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		746889BD1D2D191600354591 /* ZMBActionSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZMBActionSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		746889C11D2D191600354591 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		746889C31D2D191600354591 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,8 +54,6 @@
 		746889E71D2D191700354591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		746889F31D2D1B1400354591 /* ZMBActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBActionSheet.h; sourceTree = "<group>"; };
 		746889F41D2D1B1400354591 /* ZMBActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBActionSheet.m; sourceTree = "<group>"; };
-		90AE6C62B651363D5C83DD82 /* Pods-ZMBActionSheet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMBActionSheet.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZMBActionSheet/Pods-ZMBActionSheet.release.xcconfig"; sourceTree = "<group>"; };
-		DECC42A0ED196354ABDF25EE /* Pods-ZMBActionSheet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZMBActionSheet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZMBActionSheet/Pods-ZMBActionSheet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +61,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23D63E0F48BC0F9229229788 /* libPods-ZMBActionSheet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,15 +81,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08B9DD81279D1B8D8226F2CC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DECC42A0ED196354ABDF25EE /* Pods-ZMBActionSheet.debug.xcconfig */,
-				90AE6C62B651363D5C83DD82 /* Pods-ZMBActionSheet.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		746889B41D2D191600354591 = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +88,6 @@
 				746889D91D2D191700354591 /* ZMBActionSheetTests */,
 				746889E41D2D191700354591 /* ZMBActionSheetUITests */,
 				746889BE1D2D191600354591 /* Products */,
-				08B9DD81279D1B8D8226F2CC /* Pods */,
 				AF5ED1C351F914CE6D5DF1BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -164,7 +149,6 @@
 		AF5ED1C351F914CE6D5DF1BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B338BB7A3793351D76F0F3B /* libPods-ZMBActionSheet.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,12 +160,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 746889EA1D2D191700354591 /* Build configuration list for PBXNativeTarget "ZMBActionSheet" */;
 			buildPhases = (
-				1596269C517764BF6D3182AA /* [CP] Check Pods Manifest.lock */,
 				746889B91D2D191600354591 /* Sources */,
 				746889BA1D2D191600354591 /* Frameworks */,
 				746889BB1D2D191600354591 /* Resources */,
-				BBC1A280F5D964ADA70B3701 /* [CP] Embed Pods Frameworks */,
-				879E3B3C28D75321665B215C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -296,54 +277,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1596269C517764BF6D3182AA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		879E3B3C28D75321665B215C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZMBActionSheet/Pods-ZMBActionSheet-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BBC1A280F5D964ADA70B3701 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZMBActionSheet/Pods-ZMBActionSheet-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		746889B91D2D191600354591 /* Sources */ = {
@@ -492,7 +425,6 @@
 		};
 		746889EB1D2D191700354591 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DECC42A0ED196354ABDF25EE /* Pods-ZMBActionSheet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZMBActionSheet/Info.plist;
@@ -504,7 +436,6 @@
 		};
 		746889EC1D2D191700354591 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90AE6C62B651363D5C83DD82 /* Pods-ZMBActionSheet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZMBActionSheet/Info.plist;
