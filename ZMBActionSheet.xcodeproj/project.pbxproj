@@ -15,7 +15,7 @@
 		746889D01D2D191600354591 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 746889CE1D2D191600354591 /* LaunchScreen.storyboard */; };
 		746889DB1D2D191700354591 /* ZMBActionSheetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 746889DA1D2D191700354591 /* ZMBActionSheetTests.m */; };
 		746889E61D2D191700354591 /* ZMBActionSheetUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 746889E51D2D191700354591 /* ZMBActionSheetUITests.m */; };
-		746889F51D2D1B1400354591 /* ZMBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 746889F41D2D1B1400354591 /* ZMBActionSheet.m */; };
+		748847021D33504300157422 /* ZMBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 748847011D33504300157422 /* ZMBActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +52,8 @@
 		746889E11D2D191700354591 /* ZMBActionSheetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZMBActionSheetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		746889E51D2D191700354591 /* ZMBActionSheetUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMBActionSheetUITests.m; sourceTree = "<group>"; };
 		746889E71D2D191700354591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		746889F31D2D1B1400354591 /* ZMBActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBActionSheet.h; sourceTree = "<group>"; };
-		746889F41D2D1B1400354591 /* ZMBActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBActionSheet.m; sourceTree = "<group>"; };
+		748847001D33504300157422 /* ZMBActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBActionSheet.h; sourceTree = "<group>"; };
+		748847011D33504300157422 /* ZMBActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +84,7 @@
 		746889B41D2D191600354591 = {
 			isa = PBXGroup;
 			children = (
+				748846FF1D33502100157422 /* ActionSheet */,
 				746889BF1D2D191600354591 /* ZMBActionSheet */,
 				746889D91D2D191700354591 /* ZMBActionSheetTests */,
 				746889E41D2D191700354591 /* ZMBActionSheetUITests */,
@@ -109,8 +110,6 @@
 				746889C41D2D191600354591 /* AppDelegate.m */,
 				746889C61D2D191600354591 /* ViewController.h */,
 				746889C71D2D191600354591 /* ViewController.m */,
-				746889F31D2D1B1400354591 /* ZMBActionSheet.h */,
-				746889F41D2D1B1400354591 /* ZMBActionSheet.m */,
 				746889C91D2D191600354591 /* Main.storyboard */,
 				746889CC1D2D191600354591 /* Assets.xcassets */,
 				746889CE1D2D191600354591 /* LaunchScreen.storyboard */,
@@ -144,6 +143,15 @@
 				746889E71D2D191700354591 /* Info.plist */,
 			);
 			path = ZMBActionSheetUITests;
+			sourceTree = "<group>";
+		};
+		748846FF1D33502100157422 /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				748847001D33504300157422 /* ZMBActionSheet.h */,
+				748847011D33504300157422 /* ZMBActionSheet.m */,
+			);
+			path = ActionSheet;
 			sourceTree = "<group>";
 		};
 		AF5ED1C351F914CE6D5DF1BE /* Frameworks */ = {
@@ -286,7 +294,7 @@
 				746889C81D2D191600354591 /* ViewController.m in Sources */,
 				746889C51D2D191600354591 /* AppDelegate.m in Sources */,
 				746889C21D2D191600354591 /* main.m in Sources */,
-				746889F51D2D1B1400354591 /* ZMBActionSheet.m in Sources */,
+				748847021D33504300157422 /* ZMBActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
