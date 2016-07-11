@@ -198,8 +198,6 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
   
   [nav.view addSubview:self];
   
-//  nav.interactivePopGestureRecognizer.enabled = NO;
-  
   CGRect frame = self.tableView.frame;
   
   frame.size.height = [self tableViewHeight];
@@ -226,10 +224,6 @@ static NSString *kSheetItemIdentifer = @"SheetItemIdentifer";
 
 - (void)hidden
 {
-  
-  UINavigationController *nav = (UINavigationController *)[UIApplication sharedApplication].delegate.window.rootViewController;
-  
-//  nav.interactivePopGestureRecognizer.enabled = YES;
   
   [UIView animateWithDuration:0.3 animations:^{
     

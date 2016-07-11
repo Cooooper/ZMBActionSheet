@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/Cooooper/ZMBActionSheet.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/Cooooper/ZMBActionSheet.git", :tag => "1.0.1" }
 
   s.source_files  = "ActionSheet/*"
 
